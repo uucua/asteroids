@@ -37,6 +37,7 @@ def main()-> None:
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
+                save_high_score(score)
                 return
 
         updatable.update(dt)
@@ -60,6 +61,8 @@ def main()-> None:
                     ast.split()
                     shot.kill()
                     break
+        if score > high_score:
+            high_score = score
         score_text = font.render(f"Score: {score}", True, "white")
         high_score_text = font.render(f"High Score: {high_score}", True, "white")
         screen.fill("black")
